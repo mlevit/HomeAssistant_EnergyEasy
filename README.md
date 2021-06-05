@@ -6,22 +6,26 @@ This component will retrieve your electricity usage details from their website, 
 
 If United Energy is not your electricity distributor then this will be of no use to you.
 
-The component will only retrieve Yesterdays usage, which will also retrieve the previous days if you wish do do some other comparisions. It could easily be extended to retrieve weekly, monthly or seasonal figures as well. (I haven't got that far yet)
+The component will only retrieve Yesterdays usage, which will also retrieve the previous days if you wish do do some other comparisons. It could easily be extended to retrieve weekly, monthly or seasonal figures as well. (I haven't got that far yet)
 
-The component is based on an older version of the [mvandersteen/ha-jemenaoutlook](https://github.com/mvandersteen/ha-jemenaoutlook) energy sensor. Thank you to the writer of that component it helpd a lot.
+The component is based on an older version of the [mvandersteen/ha-jemenaoutlook](https://github.com/mvandersteen/ha-jemenaoutlook) energy sensor. Thank you to the writer of that component it helped a lot.
 
 This component is not endorsed by United Energy, nor have a I asked for their endorsement.
 
 ## Installing the component
 
-Copy the included file 'jemenaoutlook.py' to the sensor directory within custom_components directory where the configuration for your installation of home assistant sits. The custom_components directory does not exist in default installation state will will need to be created if it does not already exist.
+Copy the included files 'sensor.py, manifest.json and __init__.py' to the a new directory called energyeasy within custom_components directory where the configuration for your installation of home assistant sits. The custom_components directory does not exist in default installation state will will need to be created if it does not already exist.
 
 ```
-<homeassistant-user-configuration-directory>/custom_components/sensor/energyeasy.py
+<homeassistant-user-configuration-directory>/custom_components/energyeasy/sensor.py
+<homeassistant-user-configuration-directory>/custom_components/energyeasy/__init__.py
+<homeassistant-user-configuration-directory>/custom_components/energyeasy/manifest.json
 ```
 For me this is :-
 ```
-/home/ha/.homeassistant/custom_components/sensor/energyeasy.py
+/home/ha/.homeassistant/custom_components/energyeasy/sensor.py
+/home/ha/.homeassistant/custom_components/energyeasy/__init__.py
+/home/ha/.homeassistant/custom_components/energyeasy/manifest.json
 ```
 
 ## Configuring the sensor
@@ -102,8 +106,8 @@ sensor:
 
 **Configuration variables:**
 
-- **username** (Required): Username used to log into the Jemena Electricity Outlook website.
-- **password** (Required): Password used to log into the Jemena Electricity Outlook website
+- **username** (Required): Username used to log into the Energy Easy website.
+- **password** (Required): Password used to log into the Energy Easy website
 - **monitored_variables** array (Required): Variables to monitor.
     - **supply_charge** (AUD): **\*\*\*** Daily supply charge to properly
     - **weekday_peak_cost** (AUD): **\*\*\*** Cost per kilowatt hour for peak usage
@@ -114,7 +118,7 @@ sensor:
     - **generation_cost** (AUD): **\*\*\*** Amount paid per kilowatt hour feed into the grid
     - **yesterday_user_type** (text): Type of grid user [consumer | generator]
     - **yesterday_usage** (kwh): Net consumption of power usage for yesterday all consumption type - generation
-    - **yesterday_consumption** (kwh): Total of consuption for yesterday
+    - **yesterday_consumption** (kwh): Total of consumption for yesterday
     - **yesterday_consumption_peak** (kwh): Total peak consumption for yesterday
     - **yesterday_consumption_offpeak** (kwh): Total offpeak consumption for yesterday
     - **yesterday_consumption_shoulder** (kwh): Total shoulder consumption for yesterday
@@ -124,7 +128,7 @@ sensor:
     - **yesterday_cost_generation** (AUD): **\*\*\*** Total cost of generated electricity feed into the grid.
     - **yesterday_cost_difference** (AUD): **\*\*\*** Difference in cost from previous day
     - **yesterday_percentage_difference** (%): percentage increase in net consumption compared to previous day
-    - **yesterday_difference_message** (text): Message displayed in Electicity Outlook to describe differnce from previous day
+    - **yesterday_difference_message** (text): Message displayed in Electricity Outlook to describe difference from previous day
     - **yesterday_consumption_difference** (KWH): difference in kilowatt hours of net consumption to previous day
     - **yesterday_consumption_change** (text): One of increase or decrease
     - **yesterday_suburb_average** (kwh): Average net consumption for entire suburb
@@ -171,5 +175,5 @@ sensor:
     - last_month_generation
 
 
-\*** For the cost based variables to be reported correctly you must setup your account with your current tarrif from your electricity retailer. These values can be obtained from your latest electricity bill. 
+\*** For the cost based variables to be reported correctly you must setup your account with your current tarrif from your electricity retailer. These values can be obtained from your latest electricity bill.
 

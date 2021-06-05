@@ -1,0 +1,1 @@
+"""The Energy Easy integration."""
